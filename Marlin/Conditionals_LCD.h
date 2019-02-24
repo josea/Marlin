@@ -523,6 +523,7 @@
 #define HAS_RESUME_CONTINUE (ENABLED(NEWPANEL) || ENABLED(EMERGENCY_PARSER))
 #define HAS_COLOR_LEDS (ENABLED(BLINKM) || ENABLED(RGB_LED) || ENABLED(RGBW_LED) || ENABLED(PCA9632) || ENABLED(NEOPIXEL_LED))
 
-#define USE_MARLINSERIAL !(defined(__AVR__) && defined(USBCON))
+// this line conflicted with the bluetooth/serial1 options
+// #define USE_MARLINSERIAL !(defined(__AVR__) && defined(USBCON))
 
 #endif // CONDITIONALS_LCD_H
