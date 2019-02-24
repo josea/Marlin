@@ -76,7 +76,7 @@
  */
 #if ENABLED(THERMAL_PROTECTION_HOTENDS)
   #define THERMAL_PROTECTION_PERIOD 40        // Seconds
-  #define THERMAL_PROTECTION_HYSTERESIS 4     // Degrees Celsius
+  #define THERMAL_PROTECTION_HYSTERESIS 7     // Degrees Celsius. <= JoseA. 2019-02-24: I was having false positives, when the fan started at 100%, it takes a long time for the hotend to reach the target temperature again.
 
   /**
    * Whenever an M104, M109, or M303 increases the target temperature, the
