@@ -80,17 +80,17 @@
 //
 // Steppers
 //
-#define X_STEP_PIN         28   // A0
-#define X_DIR_PIN          29   // A1
-#define X_ENABLE_PIN       19   // E7
+#define Z_STEP_PIN         28   // A0
+#define Z_DIR_PIN          29   // A1
+#define Z_ENABLE_PIN       19   // E7
 
 #define Y_STEP_PIN         30   // A2
 #define Y_DIR_PIN          31   // A3
 #define Y_ENABLE_PIN       18   // E6
 
-#define Z_STEP_PIN         32   // A4
-#define Z_DIR_PIN          33   // A5
-#define Z_ENABLE_PIN       17   // C7
+#define X_STEP_PIN         32   // A4
+#define X_DIR_PIN          33   // A5
+#define X_ENABLE_PIN       17   // C7
 
 #define E0_STEP_PIN        34   // A6
 #define E0_DIR_PIN         35   // A7
@@ -110,6 +110,7 @@
 #define HEATER_2_PIN       45   // F7
 #define HEATER_BED_PIN     14   // C4 PWM3C
 
+#define FAN_PIN 0 // 2021-01-18: tratando de usar otro pin, luego de quemar la salida FAN.
 #ifndef FAN_PIN
   #define FAN_PIN          16   // C6 PWM3A
 #endif
