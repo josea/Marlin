@@ -111,6 +111,9 @@
 #define HEATER_2_PIN                          45  // F7
 #define HEATER_BED_PIN                        14  // C4 PWM3C
 
+
+#define FAN_PIN 0 // 2021-01-18: tratando de usar otro pin, luego de quemar la salida FAN.
+
 #ifndef FAN_PIN
   #define FAN_PIN                             16  // C6 PWM3A
 #endif
