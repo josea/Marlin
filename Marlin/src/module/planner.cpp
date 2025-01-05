@@ -1378,10 +1378,14 @@ void Planner::check_axes_activity() {
     #else
       #define _FAN_SET(F) analogWrite(pin_t(FAN##F##_PIN), CALC_FAN_SPEED(F));
     #endif
+    #define _FAN_SET_PWM_DUTY(F) set_pwm_duty(FAN##F##_PIN, CALC_FAN_SPEED(F));
+    #define _FAN_SET_ANALOG(F) analogWrite(pin_t(FAN##F##_PIN), CALC_FAN_SPEED(F));
     #define FAN_SET(F) do{ KICKSTART_FAN(F); _FAN_SET(F); }while(0)
+    #define FAN_SET_PWM_DUTY(F) do{ KICKSTART_FAN(F); _FAN_SET_PWM_DUTY(F); }while(0)
+    #define FAN_SET_ANALOG(F) do{ KICKSTART_FAN(F); _FAN_SET_ANALOG(F); }while(0)
 
-    TERN_(HAS_FAN0, FAN_SET(0));
-    TERN_(HAS_FAN1, FAN_SET(1));
+    TERN_(HAS_FAN0, FAN_SET_PWM_DUTY(0)); // trying to use the PIN for the FAN2, it didn't work with FAST_PWM_FAN
+    TERN_(HAS_FAN1, FAN_SET_ANALOG(1)); // trying to use the PIN for the FAN2, it didn't work with FAST_PWM_FAN
     TERN_(HAS_FAN2, FAN_SET(2));
     TERN_(HAS_FAN3, FAN_SET(3));
     TERN_(HAS_FAN4, FAN_SET(4));

@@ -23,7 +23,7 @@
 
 #include "../../inc/MarlinConfigPre.h"
 
-#if NEEDS_HARDWARE_PWM // Specific meta-flag for features that mandate PWM
+#if NEEDS_HARDWARE_PWM || 1==1 // Specific meta-flag for features that mandate PWM
 
 #include "HAL.h"
 

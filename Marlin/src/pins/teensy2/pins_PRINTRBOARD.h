@@ -80,14 +80,22 @@
 
 //
 // Steppers
-//
-#define X_STEP_PIN                            28  // A0
-#define X_DIR_PIN                             29  // A1
-#define X_ENABLE_PIN                          19  // E7
 
-#define Y_STEP_PIN                            30  // A2
-#define Y_DIR_PIN                             31  // A3
-#define Y_ENABLE_PIN                          18  // E6
+#define X_STEP_PIN                            5  // JP11-6 (D5)
+#define X_DIR_PIN                             7  // JP11-8 (D7)
+#define X_ENABLE_PIN                          9 // E1       JP11-11
+//#define X_STEP_PIN                            28  // A0
+//#define X_DIR_PIN                             29  // A1
+//#define X_ENABLE_PIN                          19  // E7
+
+
+#define Y_STEP_PIN                            4  // JP11-5 (D4)
+#define Y_DIR_PIN                             6 //  JP11-7 (D6)
+#define Y_ENABLE_PIN                          9  // E1       JP11-11
+//#define Y_STEP_PIN                            30  // A2
+//#define Y_DIR_PIN                             31  // A3
+//#define Y_ENABLE_PIN                          18  // E6
+
 
 #define Z_STEP_PIN                            32  // A4
 #define Z_DIR_PIN                             33  // A5
@@ -106,10 +114,19 @@
 //
 // Heaters / Fans
 //
-#define HEATER_0_PIN                          15  // C5 PWM3B - Extruder
+//#define HEATER_0_PIN                          15  // C5 PWM3B - Extruder
+#define HEATER_0_PIN                          1  // Usando el mosfet externo.
 #define HEATER_1_PIN                          44  // F6
 #define HEATER_2_PIN                          45  // F7
-#define HEATER_BED_PIN                        14  // C4 PWM3C
+//#define HEATER_BED_PIN                        14  // C4 PWM3C
+#define HEATER_BED_PIN                        15 // usando la salida original del extruder 
+
+//#define FAN_PIN 1 // 2021-01-18: tratando de usar otro pin, luego de quemar la salida FAN.
+                  // el PIN 16 definitvamente está dañado
+//#define FAN_PIN 15 // usando la salida original extruder para el FAN                  
+#define FAN_PIN 14 //salida de la cama
+#define FAN1_PIN 0 // controlar sistema de evacuación de aire de la habitación.
+//#define FAN2_PIN 16
 
 #ifndef FAN_PIN
   #define FAN_PIN                             16  // C6 PWM3A

@@ -186,10 +186,12 @@
  * THERMAL_PROTECTION_HYSTERESIS and/or THERMAL_PROTECTION_PERIOD
  */
 #if ENABLED(THERMAL_PROTECTION_HOTENDS)
+  //#define THERMAL_PROTECTION_PERIOD 50 //40        // Seconds
   #define THERMAL_PROTECTION_PERIOD 40        // Seconds
+  //#define THERMAL_PROTECTION_HYSTERESIS 7 //4     // Degrees Celsius
   #define THERMAL_PROTECTION_HYSTERESIS 4     // Degrees Celsius
 
-  //#define ADAPTIVE_FAN_SLOWING              // Slow part cooling fan if temperature drops
+  #define ADAPTIVE_FAN_SLOWING              // Slow part cooling fan if temperature drops
   #if BOTH(ADAPTIVE_FAN_SLOWING, PIDTEMP)
     //#define NO_FAN_SLOWING_IN_PID_TUNING    // Don't slow fan speed during M303
   #endif
@@ -206,6 +208,7 @@
    * and/or decrease WATCH_TEMP_INCREASE. WATCH_TEMP_INCREASE should not be set
    * below 2.
    */
+  //#define WATCH_TEMP_PERIOD 40 //20                // Seconds
   #define WATCH_TEMP_PERIOD 20                // Seconds
   #define WATCH_TEMP_INCREASE 2               // Degrees Celsius
 #endif
@@ -214,13 +217,14 @@
  * Thermal Protection parameters for the bed are just as above for hotends.
  */
 #if ENABLED(THERMAL_PROTECTION_BED)
+  //#define THERMAL_PROTECTION_BED_PERIOD        30 //20 // Seconds
   #define THERMAL_PROTECTION_BED_PERIOD        20 // Seconds
   #define THERMAL_PROTECTION_BED_HYSTERESIS     2 // Degrees Celsius
 
   /**
    * As described above, except for the bed (M140/M190/M303).
    */
-  #define WATCH_BED_TEMP_PERIOD                60 // Seconds
+  #define WATCH_BED_TEMP_PERIOD                120 //60 // Seconds
   #define WATCH_BED_TEMP_INCREASE               2 // Degrees Celsius
 #endif
 
@@ -455,8 +459,16 @@
  *   PWM on pin OC2A. Only use this option if you don't need PWM on 0C2A. (Check your schematic.)
  *   USE_OCR2A_AS_TOP sacrifices duty cycle control resolution to achieve this broader range of frequencies.
  */
+#define FAST_PWM_FAN_FREQUENCY 31400
 #if ENABLED(FAST_PWM_FAN)
-  //#define FAST_PWM_FAN_FREQUENCY 31400
+  #define FAST_PWM_FAN_FREQUENCY 31400
+  //#define FAST_PWM_FAN_FREQUENCY 15700
+  //#define FAST_PWM_FAN_FREQUENCY 7800
+  //#define FAST_PWM_FAN_FREQUENCY 3920
+  //#define FAST_PWM_FAN_FREQUENCY 1950
+  //#define FAST_PWM_FAN_FREQUENCY 977
+//  #define FAST_PWM_FAN_FREQUENCY 6400
+
   //#define USE_OCR2A_AS_TOP
 #endif
 
@@ -1710,12 +1722,12 @@
  *
  * See https://marlinfw.org/docs/features/lin_advance.html for full instructions.
  */
-//#define LIN_ADVANCE
+#define LIN_ADVANCE
 #if ENABLED(LIN_ADVANCE)
   //#define EXTRA_LIN_ADVANCE_K // Enable for second linear advance constants
   #define LIN_ADVANCE_K 0.22    // Unit: mm compression per 1mm/s extruder speed
   //#define LA_DEBUG            // If enabled, this will generate debug information output over USB.
-  //#define EXPERIMENTAL_SCURVE // Enable this option to permit S-Curve Acceleration
+  #define EXPERIMENTAL_SCURVE // Enable this option to permit S-Curve Acceleration
 #endif
 
 // @section leveling
@@ -1753,10 +1765,15 @@
  * the probe to be unable to reach any points.
  */
 #if PROBE_SELECTED && !IS_KINEMATIC
-  //#define PROBING_MARGIN_LEFT PROBING_MARGIN
-  //#define PROBING_MARGIN_RIGHT PROBING_MARGIN
-  //#define PROBING_MARGIN_FRONT PROBING_MARGIN
-  //#define PROBING_MARGIN_BACK PROBING_MARGIN
+  //#define PROBING_MARGIN_LEFT  20 //+70 //124 //70
+  //#define PROBING_MARGIN_RIGHT X_BED_SIZE -90 //+ 70 //-195 //-135
+  //#define PROBING_MARGIN_FRONT 20 //+30 //110
+  //#define PROBING_MARGIN_BACK Y_BED_SIZE -135// + 30//-230 // -135
+
+  #define PROBING_MARGIN_LEFT  0 //+70 //124 //70
+  #define PROBING_MARGIN_RIGHT 0 //20  //+ 70 //-195 //-135
+  #define PROBING_MARGIN_FRONT 20// 30 //20 //40 //+30 //110
+  #define PROBING_MARGIN_BACK 10 // 0 //60 //75 //20// + 30//-230 // -135
 #endif
 
 #if EITHER(MESH_BED_LEVELING, AUTO_BED_LEVELING_UBL)
