@@ -81,8 +81,10 @@
 //
 // Steppers
 
-#define X_STEP_PIN                            5  // JP11-6 (D5)
-#define X_DIR_PIN                             7  // JP11-8 (D7)
+// #define X_STEP_PIN                            5  // JP11-6 (D5)
+// #define X_DIR_PIN                             7  // JP11-8 (D7)
+#define X_STEP_PIN                            10  // JP11-12 (C0)
+#define X_DIR_PIN                             12  // JP11-14 (C2)
 #define X_ENABLE_PIN                          9 // E1       JP11-11
 //#define X_STEP_PIN                            28  // A0
 //#define X_DIR_PIN                             29  // A1
